@@ -110,7 +110,7 @@ def calculate_kpis(df):
     # Completion Ratio
     kpis['completed_ratio'] = df['completed_book'].sum() / len(df) if not df.empty else 0
 
-    # Engagement Index (simple formula for now)
+    # Engagement Index
     engagement_score = (kpis['accuracy_ratio'] * 0.4) + (kpis['comprehension_score'] * 0.4) + (kpis['completed_ratio'] * 0.2)
     kpis['engagement_index'] = engagement_score * 100
 
