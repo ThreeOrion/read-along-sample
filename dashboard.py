@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -15,10 +16,35 @@ st.set_page_config(
 )
 
 # --- File Paths ---
-GEOJSON_PATH = 'data/geo data/gadm41_PAK_3.json'
-DATA_PATH = 'data/sample data/The Data.csv'
-DISTRICT_TABLE_PATH = '/data/sample data/District table.csv'
-BOOK_TABLE_PATH = 'data/sample data/Book table.csv'
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
+DATA_DIR_ALT = DATA_DIR / "sample data"
+
+def pick(candidates):
+    """Returns the first path that exists from a list of candidates."""
+    for p in candidates:
+        if p.exists():
+            return p
+    raise FileNotFoundError(f"None of these files exist: {[str(c) for c in candidates]}")
+
+GEOJSON_PATH = pick([
+    DATA_DIR / "geo data" / "gadm41_PAK_3.json",
+    DATA_DIR_ALT / "geo data" / "gadm41_PAK_3.json"
+])
+DATA_PATH = pick([
+    DATA_DIR / "sample data" / "The Data.csv",
+    DATA_DIR_ALT / "The Data.csv"
+])
+DISTRICT_TABLE_PATH = pick([
+    DATA_DIR / "sample data" / "District table.csv",
+    DATA_DIR_ALT / "District table.csv"
+])
+BOOK_TABLE_PATH = pick([
+    BASE_DIR / "Book table.csv",
+    DATA_DIR / "sample data" / "Book table.csv",
+    DATA_DIR_ALT / "Book table.csv"
+])
+
 
 # --- Step 1 & 2: Data Loading and Preprocessing ---
 @st.cache_data
