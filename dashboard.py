@@ -15,10 +15,10 @@ st.set_page_config(
 )
 
 # --- File Paths ---
-GEOJSON_PATH = '/Users/temuulen/Projects/read-along-sample/data/geo data/gadm41_PAK_3.json'
-DATA_PATH = '/Users/temuulen/Projects/read-along-sample/data/sample data/The Data.csv'
-DISTRICT_TABLE_PATH = '/Users/temuulen/Projects/read-along-sample/data/sample data/District table.csv'
-BOOK_TABLE_PATH = '/Users/temuulen/Projects/read-along-sample/data/sample data/Book table.csv'
+GEOJSON_PATH = 'data/geo data/gadm41_PAK_3.json'
+DATA_PATH = 'data/sample data/The Data.csv'
+DISTRICT_TABLE_PATH = '/data/sample data/District table.csv'
+BOOK_TABLE_PATH = 'data/sample data/Book table.csv'
 
 # --- Step 1 & 2: Data Loading and Preprocessing ---
 @st.cache_data
