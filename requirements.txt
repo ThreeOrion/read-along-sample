@@ -1,0 +1,9 @@
+geopy
+streamlit
+pandas
+numpy
+plotly
+wordcloud
+matplotlib
+geopandas
+pydeck
